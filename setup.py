@@ -16,7 +16,7 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
-    url='https://pypi.python.org/pypi/guillotina_elasticsearch',
+    url='https://pypi.python.org/pypi/aiohttp_client_manager',
     license='GPL version 3',
     setup_requires=[
         'pytest-runner',
