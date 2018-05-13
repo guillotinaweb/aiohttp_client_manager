@@ -1,0 +1,15 @@
+# we want to make sure it is run on trusty where sudo is provided for postgres
+dist: trusty
+language: python
+python: 3.6-dev
+
+cache:
+  directories:
+    - eggs
+install:
+  - pip install -e .[test]
+script:
+  - pytest -s --cov=aiohttp_client_manager -v --cov-report term-missing aiohttp_client_manager
+after_success:
+  - pip install coveralls
+  - coveralls
