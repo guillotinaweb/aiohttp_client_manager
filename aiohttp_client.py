@@ -9,6 +9,7 @@ import urllib.parse
 _max_requests = int(os.environ.get('AIOHTTP_SESSION_MAX_REQUESTS', '5000'))
 _max_number_sessions = int(os.environ.get('AIOHTTP_SESSION_SIZE', '100'))
 
+
 def session_purged(key, value):
     asyncio.ensure_future(value.close())
 
