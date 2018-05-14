@@ -24,7 +24,7 @@ setup(
     ],
     zip_safe=True,
     include_package_data=True,
-    packages=find_packages(exclude=['ez_setup']),
+    py_modules=['aiohttp_client'],
     install_requires=[],
     tests_require=[],
 )
