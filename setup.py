@@ -18,14 +18,19 @@ setup(
     ],
     url='https://pypi.python.org/pypi/aiohttp_client_manager',
     license='GPL version 3',
-    setup_requires=[
-        'pytest-runner',
-        'lru-dict',
-        'aiohttp'
-    ],
     zip_safe=True,
     include_package_data=True,
     py_modules=['aiohttp_client'],
-    install_requires=[],
-    tests_require=[],
+    install_requires=[
+        'lru-dict',
+        'aiohttp'
+    ],
+    extras_require={
+        'test': [
+            'pytest==4.4.0',
+            'pytest-runner',
+            'pytest-aiohttp',
+            'pytest-asyncio',
+        ]
+    }
 )
