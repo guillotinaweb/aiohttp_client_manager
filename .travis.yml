@@ -1,5 +1,5 @@
 # we want to make sure it is run on trusty where sudo is provided for postgres
-dist: trusty
+dist: xenial
 language: python
 matrix:
   include:
