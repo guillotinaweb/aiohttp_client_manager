@@ -1,8 +1,6 @@
 
 
 import aiohttp_client
-import os
-import pytest
 import lru
 
 
@@ -53,6 +51,6 @@ async def test_session_is_closed_on_max_requests():
     sess = aiohttp_client.get_session('https://o.onna.io')
     _ = await aiohttp_client.get('https://o.onna.io')
     _ = await aiohttp_client.get('https://o.onna.io')
-    assert sess.closed == True
+    assert sess.closed
     # restore original
     aiohttp_client._max_requests = old

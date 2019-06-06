@@ -31,6 +31,7 @@ setup(
             'pytest-runner',
             'pytest-aiohttp',
             'pytest-asyncio',
+            'attrs>=19.1.0'
         ]
     }
 )
