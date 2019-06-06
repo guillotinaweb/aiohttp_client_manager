@@ -20,7 +20,8 @@ setup(
     license='GPL version 3',
     setup_requires=[
         'pytest-runner',
-        'lru-dict'
+        'lru-dict',
+        'aiohttp'
     ],
     zip_safe=True,
     include_package_data=True,

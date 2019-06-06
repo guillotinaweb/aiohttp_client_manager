@@ -19,3 +19,12 @@ The usage is similar to the python `requests` library::
     import aiohttp_client
     async with aiohttp_client.get('http://www.google.com') as resp:
         # do something here
+
+
+Configuration
+-------------
+
+Uses env variables to configure max number of reqeusts/sessions to manage:
+
+- AIOHTTP_SESSION_MAX_REQUESTS
+- AIOHTTP_SESSION_SIZE

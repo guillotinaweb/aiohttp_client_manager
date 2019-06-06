@@ -1,5 +1,7 @@
-1.0.1.dev (unreleased)
+1.1.0 (unreleased)
 ------------------
+
+- update max requests and sessions
 
 - Updated setup.py to point to aihttp_client.py
 

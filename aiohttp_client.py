@@ -2,12 +2,12 @@ import aiohttp
 import asyncio
 import lru
 import os
-import urllib.parse
+import yarl
 
 
 # max # of requests per session
-_max_requests = int(os.environ.get('AIOHTTP_SESSION_MAX_REQUESTS', '5000'))
-_max_number_sessions = int(os.environ.get('AIOHTTP_SESSION_SIZE', '100'))
+_max_requests = int(os.environ.get('AIOHTTP_SESSION_MAX_REQUESTS', '10000'))
+_max_number_sessions = int(os.environ.get('AIOHTTP_SESSION_SIZE', '200'))
 
 
 def session_purged(key, value):
@@ -19,16 +19,16 @@ _counts = {}
 
 
 def get_session(url):
-    parsed = urllib.parse.urlparse(url)
-    if parsed.netloc not in _sessions:
-        _sessions[parsed.netloc] = aiohttp.ClientSession()
-        _counts[parsed.netloc] = 0
-    if _counts[parsed.netloc] > _max_requests:
-        asyncio.ensure_future(_sessions[parsed.netloc].close())
-        _sessions[parsed.netloc] = aiohttp.ClientSession()
-        _counts[parsed.netloc] = 0
-    _counts[parsed.netloc] += 1
-    return _sessions[parsed.netloc]
+    url = yarl.URL(url)
+    if url.host not in _sessions:
+        _sessions[url.host] = aiohttp.ClientSession()
+        _counts[url.host] = 0
+    if _counts[url.host] > _max_requests:
+        asyncio.ensure_future(_sessions[url.host].close())
+        _sessions[url.host] = aiohttp.ClientSession()
+        _counts[url.host] = 0
+    _counts[url.host] += 1
+    return _sessions[url.host]
 
 
 async def close():
