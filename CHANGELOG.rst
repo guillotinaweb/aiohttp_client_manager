@@ -1,4 +1,4 @@
-1.1.1 (unreleased)
+1.1.1 (2020-04-15)
 ------------------
 
 - better session connector defaults
