@@ -26,5 +26,6 @@ Configuration
 
 Uses env variables to configure max number of reqeusts/sessions to manage:
 
-- AIOHTTP_SESSION_MAX_REQUESTS
-- AIOHTTP_SESSION_SIZE
+- AIOHTTP_SESSION_SIZE: max number of sessions to keep in cache(default 200)
+- AIOHTTP_SESSION_DNS_CACHE: number of seconds to keep dns lookup in cache(default 20)
+- AIOHTTP_SESSION_LIMIT: number of simultaneous connections to have per session(default 500)

@@ -6,8 +6,7 @@ import yarl
 
 
 # max # of requests per session
-_max_requests = int(os.environ.get('AIOHTTP_SESSION_MAX_REQUESTS', '10000'))
-_max_number_sessions = int(os.environ.get('AIOHTTP_SESSION_SIZE', '200'))
+_max_number_sessions = int(os.environ.get("AIOHTTP_SESSION_SIZE", "200"))
 
 
 def session_purged(key, value):
@@ -18,14 +17,20 @@ _sessions = lru.LRU(_max_number_sessions, callback=session_purged)
 _counts = {}
 
 
+_connect_options = {
+    "ttl_dns_cache": int(os.environ.get("AIOHTTP_SESSION_DNS_CACHE", "20")),
+    "limit": int(os.environ.get("AIOHTTP_SESSION_LIMIT", "500")),
+    "force_close": True,
+    "enable_cleanup_closed": True,
+}
+
+
 def get_session(url):
     url = yarl.URL(url)
     if url.host not in _sessions:
-        _sessions[url.host] = aiohttp.ClientSession()
-        _counts[url.host] = 0
-    if _counts[url.host] > _max_requests:
-        asyncio.ensure_future(_sessions[url.host].close())
-        _sessions[url.host] = aiohttp.ClientSession()
+        _sessions[url.host] = aiohttp.ClientSession(
+            connector=aiohttp.TCPConnector(**_connect_options)
+        )
         _counts[url.host] = 0
     _counts[url.host] += 1
     return _sessions[url.host]

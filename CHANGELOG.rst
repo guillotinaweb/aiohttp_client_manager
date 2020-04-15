@@ -1,7 +1,7 @@
 1.1.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- better session connector defaults
 
 
 1.1.0 (2019-06-06)
