@@ -17,7 +17,7 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     url='https://pypi.python.org/pypi/aiohttp_client_manager',
-    license='GPL version 3',
+    license='BSD',
     zip_safe=True,
     include_package_data=True,
     py_modules=['aiohttp_client'],
