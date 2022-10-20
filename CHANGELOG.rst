@@ -1,7 +1,7 @@
 1.1.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Change to bsd license
 
 
 1.1.1 (2020-04-15)
