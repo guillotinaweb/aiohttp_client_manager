@@ -1,4 +1,4 @@
-1.1.2 (unreleased)
+1.1.2 (2022-10-20)
 ------------------
 
 - Change to bsd license
